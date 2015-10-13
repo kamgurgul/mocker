@@ -18,8 +18,8 @@ class HeaderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('key')
-            ->add('value');
+            ->add('headerKey')
+            ->add('headerValue');
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -26,20 +26,15 @@ class Header
     /**
      * @ORM\Column(type="string", length=100)
      */
-    protected $key;
+    protected $headerKey;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    protected $value;
+    protected $headerValue;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    protected $mockId;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Mock", inversedBy="headers")
+     * @ORM\ManyToOne(targetEntity="Mock", inversedBy="headers", cascade={"persist"})
      * @ORM\JoinColumn(name="mockId", referencedColumnName="mockId")
      **/
     protected $mock;
@@ -54,77 +49,9 @@ class Header
         return $this->id;
     }
 
-    /**
-     * Get key
-     *
-     * @return string
-     */
-    public function getKey()
-    {
-        return $this->key;
-    }
 
-    /**
-     * Set key
-     *
-     * @param string $key
-     *
-     * @return Header
-     */
-    public function setKey($key)
-    {
-        $this->key = $key;
 
-        return $this;
-    }
 
-    /**
-     * Get value
-     *
-     * @return string
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * Set value
-     *
-     * @param string $value
-     *
-     * @return Header
-     */
-    public function setValue($value)
-    {
-        $this->value = $value;
-
-        return $this;
-    }
-
-    /**
-     * Get mockId
-     *
-     * @return integer
-     */
-    public function getMockId()
-    {
-        return $this->mockId;
-    }
-
-    /**
-     * Set mockId
-     *
-     * @param integer $mockId
-     *
-     * @return Header
-     */
-    public function setMockId($mockId)
-    {
-        $this->mockId = $mockId;
-
-        return $this;
-    }
 
     /**
      * Get mock
@@ -146,6 +73,54 @@ class Header
     public function setMock(\AppBundle\Entity\Mock $mock = null)
     {
         $this->mock = $mock;
+
+        return $this;
+    }
+
+    /**
+     * Get headerKey
+     *
+     * @return string
+     */
+    public function getHeaderKey()
+    {
+        return $this->headerKey;
+    }
+
+    /**
+     * Set headerKey
+     *
+     * @param string $headerKey
+     *
+     * @return Header
+     */
+    public function setHeaderKey($headerKey)
+    {
+        $this->headerKey = $headerKey;
+
+        return $this;
+    }
+
+    /**
+     * Get headerValue
+     *
+     * @return string
+     */
+    public function getHeaderValue()
+    {
+        return $this->headerValue;
+    }
+
+    /**
+     * Set headerValue
+     *
+     * @param string $headerValue
+     *
+     * @return Header
+     */
+    public function setHeaderValue($headerValue)
+    {
+        $this->headerValue = $headerValue;
 
         return $this;
     }

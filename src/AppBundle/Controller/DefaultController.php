@@ -24,7 +24,10 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            // ... perform some action, such as saving the task to the database
+            $em = $this->getDoctrine()->getManager();
+
+            $em->persist($mock);
+            $em->flush();
 
             return $this->redirectToRoute('task_success');
         }

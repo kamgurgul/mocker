@@ -14,5 +14,7 @@
     </ul>
 
     {{ form_row(form.body) }}
+    {{ form_row(form.generate) }}
+    {{ form_widget(form._token) }}
     {{ form_end(form, {'render_rest': false}) }}
 {% endblock %}

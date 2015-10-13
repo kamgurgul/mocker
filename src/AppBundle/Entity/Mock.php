@@ -27,12 +27,12 @@ class Mock
     /**
      * @ORM\Column(type="integer")
      */
-    protected $userId;
+    protected $userId = 0;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-    protected $url;
+    protected $url = 'test';
 
     /**
      * @ORM\Column(type="string", length=20)
@@ -57,31 +57,22 @@ class Mock
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $blocked;
+    protected $blocked = 0;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    protected $deleted;
+    protected $deleted = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="Header", mappedBy="mock")
+     * @ORM\OneToMany(targetEntity="Header", mappedBy="mock", cascade={"persist"})
      **/
     protected $headers;
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->headers = new ArrayCollection();
-    }
-
-    /**
-     * Get mockId
-     *
-     * @return integer
-     */
-    public function getMockId()
-    {
-        return $this->mockId;
     }
 
     /**
