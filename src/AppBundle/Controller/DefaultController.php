@@ -29,7 +29,6 @@ class DefaultController extends Controller
         if ($form->isValid()) {
 
             $em->persist($mock);
-            $em->persist($header);
             $em->flush();
 
             return $this->redirectToRoute('task_success');
