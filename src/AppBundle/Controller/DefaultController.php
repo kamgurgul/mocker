@@ -16,17 +16,20 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $mock = new Mock();
         $header = new Header();
         $mock->addHeader($header);
+        $header->setMock($mock);
         $form = $this->createForm(new MockType(), $mock);
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
 
             $em->persist($mock);
+            $em->persist($header);
             $em->flush();
 
             return $this->redirectToRoute('task_success');
