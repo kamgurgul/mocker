@@ -34,7 +34,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute('task_success');
         }
 
-        return $this->render('default/new.html.twig', array(
+        return $this->render('default/main.html.twig', array(
             'form' => $form->createView(),
         ));
     }

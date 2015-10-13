@@ -9,7 +9,8 @@
         {{ form_widget(form.headers.vars.prototype.children.value) }}#}
     <ul class="headers" data-prototype="{{ form_widget(form.headers.vars.prototype)|e }}">
         {% for header in form.headers %}
-            {{ form_row(header, {'label': false }) }}
+            {{ form_widget(header.headerKey, {'label': false }) }}
+            {{ form_widget(header.headerValue, {'label': false }) }}
         {% endfor %}
     </ul>
 
