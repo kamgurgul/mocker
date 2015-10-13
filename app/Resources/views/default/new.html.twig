@@ -5,11 +5,14 @@
     {{ form_row(form.method) }}
     {{ form_row(form.responseStatus) }}
 
-    {{ form_widget(form.headers.vars.prototype) }}
-    {# <ul class="headers" data-prototype="{{ form_widget(form.headers.vars.prototype)|e }}">
-         {{ form_widget(form.headers.vars.prototype)|e }}
-     </ul>#}
+    {#    {{ form_widget(form.headers.vars.prototype.children.key) }}
+        {{ form_widget(form.headers.vars.prototype.children.value) }}#}
+    <ul class="headers" data-prototype="{{ form_widget(form.headers.vars.prototype)|e }}">
+        {% for header in form.headers %}
+            {{ form_row(header, {'label': false }) }}
+        {% endfor %}
+    </ul>
 
     {{ form_row(form.body) }}
-{{ form_end(form) }}
+    {{ form_end(form, {'render_rest': false}) }}
 {% endblock %}

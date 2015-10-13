@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Header;
 use AppBundle\Entity\Mock;
 use AppBundle\Form\Type\MockType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -16,6 +17,8 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $mock = new Mock();
+        $header = new Header();
+        $mock->addHeader($header);
         $form = $this->createForm(new MockType(), $mock);
 
         $form->handleRequest($request);
