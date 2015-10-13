@@ -15,14 +15,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // just setup a fresh $task object (remove the dummy data)
-        $task = new Mock();
-        $form = $this->createForm(new MockType(), $task);
-        /* $form = $this->createFormBuilder($task)
-             ->add('task', 'text')
-             ->add('dueDate', 'date')
-             ->add('save', 'submit', array('label' => 'Create Task'))
-             ->getForm();*/
+        $mock = new Mock();
+        $form = $this->createForm(new MockType(), $mock);
 
         $form->handleRequest($request);
 

@@ -39,6 +39,12 @@ class Header
     protected $mockId;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Mock", inversedBy="headers")
+     * @ORM\JoinColumn(name="mockId", referencedColumnName="mockId")
+     **/
+    protected $mock;
+
+    /**
      * Get id
      *
      * @return integer
@@ -116,6 +122,30 @@ class Header
     public function setMockId($mockId)
     {
         $this->mockId = $mockId;
+
+        return $this;
+    }
+
+    /**
+     * Get mock
+     *
+     * @return \AppBundle\Entity\Mock
+     */
+    public function getMock()
+    {
+        return $this->mock;
+    }
+
+    /**
+     * Set mock
+     *
+     * @param \AppBundle\Entity\Mock $mock
+     *
+     * @return Header
+     */
+    public function setMock(\AppBundle\Entity\Mock $mock = null)
+    {
+        $this->mock = $mock;
 
         return $this;
     }

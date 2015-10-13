@@ -8,6 +8,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,6 +35,11 @@ class Mock
     protected $url;
 
     /**
+     * @ORM\Column(type="string", length=20)
+     */
+    protected $method;
+
+    /**
      * @ORM\Column(type="integer")
      */
     protected $responseStatus;
@@ -57,6 +63,16 @@ class Mock
      * @ORM\Column(type="boolean")
      */
     protected $deleted;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Header", mappedBy="mock")
+     **/
+    protected $headers;
+
+    public function __construct()
+    {
+        $this->headers = new ArrayCollection();
+    }
 
     /**
      * Get mockId
@@ -234,5 +250,73 @@ class Mock
         $this->deleted = $deleted;
 
         return $this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get method
+     *
+     * @return string
+     */
+    public function getMethod()
+    {
+        return $this->method;
+    }
+
+    /**
+     * Set method
+     *
+     * @param string $method
+     *
+     * @return Mock
+     */
+    public function setMethod($method)
+    {
+        $this->method = $method;
+
+        return $this;
+    }
+
+    /**
+     * Add header
+     *
+     * @param \AppBundle\Entity\Header $header
+     *
+     * @return Mock
+     */
+    public function addHeader(\AppBundle\Entity\Header $header)
+    {
+        $this->headers[] = $header;
+
+        return $this;
+    }
+
+    /**
+     * Remove header
+     *
+     * @param \AppBundle\Entity\Header $header
+     */
+    public function removeHeader(\AppBundle\Entity\Header $header)
+    {
+        $this->headers->removeElement($header);
+    }
+
+    /**
+     * Get headers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
     }
 }
