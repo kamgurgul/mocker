@@ -18,10 +18,12 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        // Fix to show first clear header inputs
         $mock = new Mock();
         $header = new Header();
         $mock->addHeader($header);
         $header->setMock($mock);
+
         $form = $this->createForm(new MockType(), $mock);
 
         $form->handleRequest($request);
