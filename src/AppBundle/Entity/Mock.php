@@ -32,7 +32,7 @@ class Mock
     /**
      * @ORM\Column(type="string", length=100)
      */
-    protected $url = 'test';
+    protected $url;
 
     /**
      * @ORM\Column(type="string", length=20)

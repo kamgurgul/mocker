@@ -6,4 +6,7 @@ parameters:
 services:
     mock_service:
         class: AppBundle\Service\MockService
-        arguments: [ "@doctrine.orm.entity_manager" ]
+        arguments: [ "@doctrine.orm.entity_manager", "@utils" ]
+
+    utils:
+        class: AppBundle\Utils\Utils
