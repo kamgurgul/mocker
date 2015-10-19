@@ -16,8 +16,6 @@ class MainController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-
         // Fix to show first clear header inputs
         $mock = new Mock();
         $header = new Header();
@@ -29,9 +27,8 @@ class MainController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
-            $em->persist($mock);
-            $em->flush();
+            $mockService = $this->get('mock_service');
+            $mockService->generateMockUrl($mock);
 
             return $this->redirectToRoute('task_success');
         }
