@@ -17,22 +17,24 @@ class MockService
 {
     private $entityManager;
     private $utils;
+    private $mockRepository;
 
     public function __construct(EntityManager $entityManager, Utils $utils)
     {
         $this->entityManager = $entityManager;
         $this->utils = $utils;
+
+        $this->mockRepository = $this->entityManager->getRepository('AppBundle:Mock');
     }
 
     public function generateMockUrl(Mock $mock)
     {
         $mock->setUrl($this->utils->generateUUIDWithUserId($mock->getUserId()));
-        $this->saveMockToDb($mock);
+        $this->mockRepository->saveMock($mock);
     }
 
-    public function saveMockToDb(Mock $mock)
+    public function getMock($mockUrl)
     {
-        $this->entityManager->persist($mock);
-        $this->entityManager->flush();
+        return $this->mockRepository->getMockByUrl($mockUrl);
     }
 }

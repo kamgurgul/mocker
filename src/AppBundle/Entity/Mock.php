@@ -254,6 +254,15 @@ class Mock
     }
 
     /**
+     * Set id
+     * @param $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
      * Get method
      *
      * @return string

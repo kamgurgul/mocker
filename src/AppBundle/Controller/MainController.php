@@ -37,4 +37,15 @@ class MainController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    /**
+     * @Route("/{mockUrl}", name="mock")
+     */
+    public function mockAction($mockUrl)
+    {
+        $mockService = $this->get('mock_service');
+        $mock = $mockService->getMock($mockUrl);
+
+        return $this->render($mock->getBody());
+    }
 }
