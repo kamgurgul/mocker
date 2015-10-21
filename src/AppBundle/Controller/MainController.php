@@ -8,6 +8,7 @@ use AppBundle\Form\Type\MockType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class MainController extends Controller
 {
@@ -46,6 +47,14 @@ class MainController extends Controller
         $mockService = $this->get('mock_service');
         $mock = $mockService->getMock($mockUrl);
 
-        return $this->render($mock->getBody());
+        $response = new Response();
+        $response->setContent($mock->getBody());
+        $response->setStatusCode($mock->getResponseStatus());
+
+        foreach ($mock->getHeaders() as $header) {
+            $response->headers->set($header->getHeaderKey(), $header->getHeaderValue());
+        }
+
+        return $response;
     }
 }

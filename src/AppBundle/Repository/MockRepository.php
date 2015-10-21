@@ -9,7 +9,6 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Mock;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Proxies\__CG__\AppBundle\Entity\Header;
 
@@ -19,21 +18,21 @@ class MockRepository extends EntityRepository
     {
         $result = $this->getEntityManager()->createQueryBuilder()
             ->select('
-                mockId,
-                user_id,
-                url,
-                method,
-                response_status,
-                body,
-                created_at,
-                blocked,
-                deleted,
-                headerId,
-                header_key
-                header_value
+                m.id as mockId,
+                m.userId,
+                m.url,
+                m.method,
+                m.responseStatus,
+                m.body,
+                m.createdAt,
+                m.blocked,
+                m.deleted,
+                h.id as headerId,
+                h.headerKey,
+                h.headerValue
             ')
-            ->from('Mock', 'm')
-            ->leftJoin('Header', 'h', 'WITH', 'm.mockId = h.mockId')
+            ->from('AppBundle:Mock', 'm')
+            ->leftJoin('m.headers', 'h')
             ->where('m.url = :url')
             ->setMaxResults(1)
             ->setParameter(':url', $mockUrl)
@@ -47,22 +46,23 @@ class MockRepository extends EntityRepository
         }
     }
 
-    private function parseDBDataToObject(ArrayCollection $dbMock)
+    private function parseDBDataToObject($dbMock)
     {
         $mock = new Mock();
-        $mock->setId($dbMock->get('mockId'));
-        $mock->setUserId($dbMock->get('user_id'));
-        $mock->setUrl($dbMock->get('url'));
-        $mock->setMethod($dbMock->get('method'));
-        $mock->setResponseStatus($dbMock->get('response_status'));
-        $mock->setBody($dbMock->get('body'));
-        $mock->setCreatedAt($dbMock->get('created_at'));
-        $mock->setBlocked($dbMock->get('blocked'));
-        $mock->setDeleted($dbMock->get('deleted'));
+
+        $mock->setId($dbMock[0]['mockId']);
+        $mock->setUserId($dbMock[0]['userId']);
+        $mock->setUrl($dbMock[0]['url']);
+        $mock->setMethod($dbMock[0]['method']);
+        $mock->setResponseStatus($dbMock[0]['responseStatus']);
+        $mock->setBody($dbMock[0]['body']);
+        $mock->setCreatedAt($dbMock[0]['createdAt']);
+        $mock->setBlocked($dbMock[0]['blocked']);
+        $mock->setDeleted($dbMock[0]['deleted']);
 
         $headers = new Header();
-        $headers->setHeaderKey($dbMock->get('header_key'));
-        $headers->setHeaderValue($dbMock->get('header_value'));
+        $headers->setHeaderKey($dbMock[0]['headerKey']);
+        $headers->setHeaderValue($dbMock[0]['headerValue']);
         $mock->addHeader($headers);
 
         return $mock;

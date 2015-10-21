@@ -25,7 +25,7 @@ class Mock
     protected $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="userId")
      */
     protected $userId = 0;
 
@@ -40,7 +40,7 @@ class Mock
     protected $method;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", name="responseStatus")
      */
     protected $responseStatus;
 
@@ -50,7 +50,7 @@ class Mock
     protected $body;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", name="createdAt")
      */
     protected $createdAt;
 

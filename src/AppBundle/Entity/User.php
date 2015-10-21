@@ -39,7 +39,7 @@ class User
     protected $email;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", name="createdAt")
      */
     protected $createdAt;
 

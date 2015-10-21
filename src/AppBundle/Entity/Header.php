@@ -24,12 +24,12 @@ class Header
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, name="headerKey")
      */
     protected $headerKey;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="string", length=100, name="headerValue")
      */
     protected $headerValue;
 
@@ -48,10 +48,6 @@ class Header
     {
         return $this->id;
     }
-
-
-
-
 
     /**
      * Get mock
