@@ -10,7 +10,6 @@ namespace AppBundle\Repository;
 
 use AppBundle\Entity\Mock;
 use Doctrine\ORM\EntityRepository;
-use Proxies\__CG__\AppBundle\Entity\Header;
 
 class MockRepository extends EntityRepository
 {
