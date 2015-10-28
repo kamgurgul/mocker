@@ -41,7 +41,8 @@
     {% block body %}{% endblock %}
 </div>
 {% block javascripts %}
-    {% javascripts '../app/Resources/public/js/*' %}
+    {% javascripts '../app/Resources/public/js/*'
+    '../app/Resources/public/js/bootstrap/*' %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

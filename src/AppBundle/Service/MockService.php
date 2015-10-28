@@ -31,6 +31,8 @@ class MockService
     {
         $mock->setUrl($this->utils->generateUUIDWithUserId($mock->getUserId()));
         $this->mockRepository->saveMock($mock);
+
+        return $mock->getUrl();
     }
 
     public function getMock($mockUrl)

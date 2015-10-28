@@ -29,9 +29,9 @@ class MainController extends Controller
 
         if ($form->isValid()) {
             $mockService = $this->get('mock_service');
-            $mockService->generateMockUrl($mock);
+            $mockUrl = $mockService->generateMockUrl($mock);
 
-            return $this->redirectToRoute('task_success');
+            return new Response($mockUrl);
         }
 
         return $this->render('default/main.html.twig', array(

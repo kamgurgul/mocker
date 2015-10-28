@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{ form_start(form) }}
+    {{ form_start(form, {'attr': {'id': 'mock_form'}}) }}
     {{ form_row(form.method) }}
     {{ form_row(form.responseStatus) }}
 
@@ -15,7 +15,8 @@
     </ul>
 
     {{ form_row(form.body) }}
-    {{ form_row(form.generate) }}
     {{ form_widget(form._token) }}
     {{ form_end(form, {'render_rest': false}) }}
+
+    <input type="button" id="submit_form_button" value="Generate" class="btn-default btn">
 {% endblock %}
