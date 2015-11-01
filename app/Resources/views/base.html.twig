@@ -8,7 +8,7 @@
     <meta name="author" content="kgurgul">
     <title>{% block title %}Mocker{% endblock %}</title>
     {% block stylesheets %}
-        {% stylesheets '../app/Resources/public/css/*' filter='cssrewrite' %}
+        {% stylesheets '../app/Resources/public/css/*' %}
         <link rel="stylesheet" href="{{ asset_url }}"/>
         {% endstylesheets %}
     {% endblock %}
