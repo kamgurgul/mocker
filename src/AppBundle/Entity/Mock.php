@@ -10,6 +10,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MockRepository")
@@ -36,16 +37,28 @@ class Mock
 
     /**
      * @ORM\Column(type="string", length=20)
+     *
+     * @Assert\Choice(
+     *     choices = { "GET", "POST", "PUT", "DELETE", "HEAD", "CONNECT", "OPTIONS", "TRACE" },
+     *     message = "Choose a valid method."
+     * )
      */
     protected $method;
 
     /**
      * @ORM\Column(type="integer", name="responseStatus")
+     *
+     * @Assert\Range(
+     *      min = 100,
+     *      max = 600,
+     *      minMessage = "Min response status is {{ limit }}",
+     *      maxMessage = "Max response status is {{ limit }}"
+     * )
      */
     protected $responseStatus;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $body;
 

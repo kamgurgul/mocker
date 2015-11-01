@@ -5,6 +5,8 @@
     {{ form_row(form.method) }}
     {{ form_row(form.responseStatus) }}
 
+    <hr>
+
     {#    {{ form_widget(form.headers.vars.prototype.children.key) }}
         {{ form_widget(form.headers.vars.prototype.children.value) }}#}
     <ul class="headers" data-prototype="{{ form_widget(form.headers.vars.prototype)|e }}">
@@ -13,6 +15,8 @@
             {{ form_widget(header.headerValue, {'label': false }) }}
         {% endfor %}
     </ul>
+
+    <hr>
 
     {{ form_row(form.body) }}
     {{ form_widget(form._token) }}

@@ -18,24 +18,27 @@ class MockType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('method', 'choice', array('choices' => array(
-                'GET' => 'GET',
-                'POST' => 'POST',
-                'PUT' => 'PUT',
-                'DELETE' => 'DELETE',
-                'HEAD' => 'HEAD',
-                'CONNECT' => 'CONNECT',
-                'OPTIONS' => 'OPTIONS',
-                'TRACE' => 'TRACE'
-            ),))
-            ->add('responseStatus')
+            ->add('method', 'choice', array(
+                'choices' => array(
+                    'GET' => 'GET',
+                    'POST' => 'POST',
+                    'PUT' => 'PUT',
+                    'DELETE' => 'DELETE',
+                    'HEAD' => 'HEAD',
+                    'CONNECT' => 'CONNECT',
+                    'OPTIONS' => 'OPTIONS',
+                    'TRACE' => 'TRACE'),
+                'label' => 'Request method',
+            ))
+            ->add('responseStatus', 'text', array(
+                'data' => '200'
+            ))
             ->add('headers', 'collection', array(
                 'type' => new HeaderType(),
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,))
-            ->add('body', 'textarea')
-            ->add('generate', 'submit', array('label' => 'Generate'));
+            ->add('body', 'textarea');
     }
 
     public function configureOptions(OptionsResolver $resolver)
