@@ -23,20 +23,24 @@
         {{ form_widget(form.headers.vars.prototype.children.value) }}#}
     <div class="form-group">
         {{ form_label(form.headers, null, { 'label_attr': {'class': 'col-sm-2'} }) }}
-        <ul class="headers" data-prototype="
+        <ul id="headers_list" class="headers" data-prototype="
             {% filter escape %}
                 {{ include(':prototypes:header_prototype.html.twig', { 'form': form.headers.vars.prototype  }) }}
             {% endfilter %}"
             style="-webkit-padding-start: 0px;">
             {% for header in form.headers %}
-                <div class="col-sm-3">
-                    {{ form_widget(header.headerKey, {'label': false, 'attr': {'placeholder': "Key"} }) }}
-                </div>
-                <div class="col-sm-3">
-                    {{ form_widget(header.headerValue, {'label': false, 'attr': {'placeholder': "Value"} }) }}
-                </div>
+                <li class="row">
+                    <div class="col-sm-3">
+                        {{ form_widget(header.headerKey, {'label': false, 'attr': {'placeholder': "Key"} }) }}
+                    </div>
+                    <div class="col-sm-3">
+                        {{ form_widget(header.headerValue, {'label': false, 'attr': {'placeholder': "Value"} }) }}
+                    </div>
+                    <button id="add_header_button" type="button" class="btn btn-success btn-circle">
+                        <i class="glyphicon glyphicon-plus"></i>
+                    </button>
+                </li>
             {% endfor %}
-            <button type="button" class="btn btn-success btn-circle"><i class="glyphicon glyphicon-plus"></i></button>
         </ul>
     </div>
 
