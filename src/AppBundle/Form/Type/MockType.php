@@ -18,7 +18,16 @@ class MockType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('method')
+            ->add('method', 'choice', array('choices' => array(
+                'GET' => 'GET',
+                'POST' => 'POST',
+                'PUT' => 'PUT',
+                'DELETE' => 'DELETE',
+                'HEAD' => 'HEAD',
+                'CONNECT' => 'CONNECT',
+                'OPTIONS' => 'OPTIONS',
+                'TRACE' => 'TRACE'
+            ),))
             ->add('responseStatus')
             ->add('headers', 'collection', array(
                 'type' => new HeaderType(),

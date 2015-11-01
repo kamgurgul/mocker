@@ -319,4 +319,9 @@ class Mock
     {
         return $this->headers;
     }
+
+    public function setHeaders($headers)
+    {
+        $this->headers = $headers;
+    }
 }

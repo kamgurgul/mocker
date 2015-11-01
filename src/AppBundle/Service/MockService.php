@@ -30,6 +30,14 @@ class MockService
     public function generateMockUrl(Mock $mock)
     {
         $mock->setUrl($this->utils->generateUUIDWithUserId($mock->getUserId()));
+
+        if ($mock->getHeaders()->count() == 1
+            && ($mock->getHeaders()->get(0)->getHeaderKey() == null)
+            || $mock->getHeaders()->get(0)->getHeaderValue() == null
+        ) {
+            $mock->setHeaders(null);
+        }
+
         $this->mockRepository->saveMock($mock);
 
         return $mock->getUrl();

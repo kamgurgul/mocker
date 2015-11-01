@@ -35,7 +35,7 @@ class Header
 
     /**
      * @ORM\ManyToOne(targetEntity="Mock", inversedBy="headers", cascade={"persist"})
-     * @ORM\JoinColumn(name="mockId", referencedColumnName="mockId")
+     * @ORM\JoinColumn(name="mockId", referencedColumnName="mockId", nullable=true)
      **/
     protected $mock;
 
