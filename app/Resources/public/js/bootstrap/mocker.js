@@ -3,7 +3,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         var headerList = jQuery('#headers_list');
-        var headerCount = headerList.size();
+        var headerCount = (headerList.find(':input').length - 1) / 2;
 
         var newWidget = headerList.attr('data-prototype');
         // replace the "__name__" used in the id and name of the prototype
@@ -12,7 +12,7 @@ $(document).ready(function () {
         newWidget = newWidget.replace(/__name__/g, headerCount);
 
         // create a new list element and add it to the list
-        var newLi = jQuery('<li class="row"></li>').html(newWidget);
+        var newLi = jQuery('<li class="row" style="margin-top: 10px"></li>').html(newWidget);
         newLi.appendTo(headerList);
     });
 });

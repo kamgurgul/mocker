@@ -308,9 +308,8 @@ class Mock
      */
     public function addHeader(\AppBundle\Entity\Header $header)
     {
-        $this->headers[] = $header;
-
-        return $this;
+        $header->setMock($this);
+        $this->headers->add($header);
     }
 
     /**
