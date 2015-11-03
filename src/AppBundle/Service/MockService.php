@@ -31,11 +31,10 @@ class MockService
     {
         $mock->setUrl($this->utils->generateUUIDWithUserId($mock->getUserId()));
 
-        if ($mock->getHeaders()->count() == 1
-            && ($mock->getHeaders()->get(0)->getHeaderKey() == null)
-            || $mock->getHeaders()->get(0)->getHeaderValue() == null
-        ) {
-            $mock->setHeaders(null);
+        foreach ($mock->getHeaders() as $header) {
+            if ($header->getHeaderKey() == null || $header->getHeaderValue() == null) {
+                $mock->removeHeader($header);
+            }
         }
 
         $this->mockRepository->saveMock($mock);
