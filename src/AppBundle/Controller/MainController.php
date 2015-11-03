@@ -30,6 +30,7 @@ class MainController extends Controller
         if ($form->isValid()) {
             $mockService = $this->get('mock_service');
             $mockUrl = $mockService->generateMockUrl($mock);
+            $mockUrl = $this->get('request')->getSchemeAndHttpHost() . '/' . $mockUrl;
 
             return new Response($mockUrl);
         }

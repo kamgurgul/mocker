@@ -22,14 +22,46 @@ $("#submit_form_button").click(function () {
         $.ajax({
             type: "POST",
             data: $(this).serialize(),
+            beforeSend: function () {
+                $.blockUI.defaults.css = {
+                    padding: 0,
+                    margin: 0,
+                    width: '30%',
+                    top: '40%',
+                    left: '35%',
+                    textAlign: 'center',
+                    cursor: 'wait'
+                };
+                $.blockUI({
+                    message: '<img src="images/ajax-loader.gif" id="loader" />'
+                });
+            },
             success: function (data) {
-                alert(data);
+                showDialogWithMock(data);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.responseText);
+            },
+            complete: function () {
+                $.unblockUI();
             }
         });
         e.preventDefault();
     });
     $("#mock_form").submit();
 });
+
+function showDialogWithMock(url) {
+    BootstrapDialog.show({
+        type: BootstrapDialog.TYPE_SUCCESS,
+        title: 'Your mock URL',
+        message: url,
+        closable: false,
+        buttons: [{
+            label: 'Close',
+            action: function (dialog) {
+                dialog.close();
+            }
+        }]
+    });
+}
