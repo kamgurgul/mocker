@@ -42,10 +42,14 @@ class MainController extends Controller
     /**
      * @Route("/{mockUrl}", name="mock")
      */
-    public function mockAction($mockUrl)
+    public function mockAction(Request $request, $mockUrl)
     {
         $mockService = $this->get('mock_service');
         $mock = $mockService->getMock($mockUrl);
+
+        if ($mock->getMethod() != $request->getMethod()) {
+            throw $this->createNotFoundException('Wrong request method!');
+        }
 
         $response = new Response();
         $response->setContent($mock->getBody());
