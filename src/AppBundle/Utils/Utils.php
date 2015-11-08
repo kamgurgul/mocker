@@ -38,6 +38,12 @@ class Utils
         return count($matches[0]);
     }
 
+    /**
+     * Find next tag and its index
+     *
+     * @param $body
+     * @return mixed
+     */
     function findNextTag($body)
     {
         preg_match_all($this->tagsPattern, $body, $matches, PREG_OFFSET_CAPTURE);
@@ -49,6 +55,7 @@ class Utils
      * Return data from specific tag
      *
      * @param $tag
+     * @param $tagParams
      * @return string
      */
     function getTagData($tag, $tagParams)
@@ -68,6 +75,12 @@ class Utils
         return '';
     }
 
+    /**
+     *
+     *
+     * @param $tag
+     * @return string
+     */
     function getTagName($tag)
     {
         $pos = strrpos($tag, "?");

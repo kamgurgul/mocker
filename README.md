@@ -16,6 +16,7 @@ Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœn
 * Interfejs: Material Design for Bootstrap
 
 ###4. ERD bazy danych 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "ERD")
 
 ####mock – pojedyncza odpowiedŸ serwera zadeklarowana przez u¿ytkownika
 * mockId – id 
