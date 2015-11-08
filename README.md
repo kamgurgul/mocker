@@ -5,6 +5,7 @@ Mocker
 Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœniej przygotowanych danych np. json czy xml. Dziêki aplikacji mo¿liwe bêdzie przygotowanie ró¿nych odpowiedzi serwera i przetestowanie ich zarówno przez klientów mobilnych jak i inne serwery.
 
 ###2. Interfejs u¿ytkownika
+![alt text](https://github.com/kgurgul/mocker/blob/master/info/UI_Interface.png "UI")
 
 ###3. U¿yte technologie
 * Jêzyk programowania: PHP
@@ -27,6 +28,7 @@ Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœn
 * body – treœæ odpowiedzi 
 * blocked – ¿¹danie aktywne lub zablokowane
 * deleted – wartoœæ 1 dla usuniêtego ¿¹dania  
+* method - metoda ¿¹dania 
 
 ####user – tabela u¿ytkowników (mo¿e zostaæ zast¹piona przez bibliotekê)
 * userId – id
