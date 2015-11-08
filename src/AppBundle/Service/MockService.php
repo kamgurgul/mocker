@@ -46,4 +46,17 @@ class MockService
     {
         return $this->mockRepository->getMockByUrl($mockUrl);
     }
+
+    public function convertSpecialTags($body)
+    {
+        $tags = $this->utils->findTags($body);
+        if (!empty($tags)) {
+            foreach ($tags as $tag) {
+                $tagData = $this->utils->getTagData($tag[0]);
+                $body = substr_replace($body, $tagData, $tag[1], strlen($tag[0]));
+            }
+        }
+
+        return $body;
+    }
 }
