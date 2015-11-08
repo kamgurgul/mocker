@@ -43,7 +43,15 @@ Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœn
 * value – wartoœæ nag³ówka 
 * mockId – id mock`a
 
-###5. Dodatkowe opcje mockowania
+###5. Diagram sekwencji
+![alt text](https://github.com/kgurgul/mocker/blob/master/info/Diagram_sekwencji.png "Diagram sekwencji")
+
+###6. Diagram przypadków u¿ycia
+Modu³ u¿ytkownika jest niezaimplementowany w tej wersji 
+
+![alt text](https://github.com/kgurgul/mocker/blob/master/info/Przypadki_u¿ycia.png "Przypadki u¿ycia")
+
+###7. Dodatkowe opcje mockowania
 Aby u¿yæ specjalnych tagów nale¿y u¿yæ szablonu: {{nazwa_tagu?opcjonalne_parametry}}
 
 ####Dostêpne tagi:
