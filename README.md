@@ -42,3 +42,6 @@ Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœn
 * key – klucz nag³ówka 
 * value – wartoœæ nag³ówka 
 * mockId – id mock`a
+
+###5. Dodatkowe opcje mockowania
+Aby u¿yæ specjalnych tagów nale¿y u¿yæ szablonu: {{nazwa_tagu?<opcjonalne_parametry>}}
