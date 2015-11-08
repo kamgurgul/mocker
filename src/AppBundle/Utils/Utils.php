@@ -26,24 +26,23 @@ class Utils
     }
 
     /**
-     * Return array of tags
-     * <p/>
-     * {array} [2]
-     *   0 = {array} [2]
-     *     0 = "{{Date?}}"  // name
-     *     1 = 8            // index
-     *   1 = {array} [2]
-     *     0 = "{{Date?}}"
-     *     1 = 35
+     * Return tags amount
      *
      * @param $body
      * @return mixed
      */
-    function findTags($body)
+    function findTagsAmount($body)
     {
         preg_match_all($this->tagsPattern, $body, $matches, PREG_OFFSET_CAPTURE);
 
-        return $matches[0];
+        return count($matches[0]);
+    }
+
+    function findNextTag($body)
+    {
+        preg_match_all($this->tagsPattern, $body, $matches, PREG_OFFSET_CAPTURE);
+
+        return $matches[0][0];
     }
 
     /**
@@ -52,14 +51,18 @@ class Utils
      * @param $tag
      * @return string
      */
-    function getTagData($tag)
+    function getTagData($tag, $tagParams)
     {
         $tagName = $this->getTagName($tag);
 
         switch ($tagName) {
             case $this->DATE_TAG:
+                $format = 'Y-m-d H:i:s';
+                if (isset($tagParams['format'])) {
+                    $format = $tagParams['format'];
+                }
                 $date = new \DateTime();
-                return $date->format('Y-m-d H:i:s');
+                return $date->format($format);
         }
 
         return '';
@@ -70,5 +73,14 @@ class Utils
         $pos = strrpos($tag, "?");
 
         return substr($tag, 2, $pos - 2);
+    }
+
+    function getTagParams($tag)
+    {
+        $paramsString = substr($tag[0], 3 + strlen($this->getTagName($tag[0])));
+        $paramsString = substr($paramsString, 0, strlen($paramsString) - 2);
+        parse_str($paramsString, $params);
+
+        return $params;
     }
 }

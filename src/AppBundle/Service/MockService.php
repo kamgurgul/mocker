@@ -49,10 +49,13 @@ class MockService
 
     public function convertSpecialTags($body)
     {
-        $tags = $this->utils->findTags($body);
-        if (!empty($tags)) {
-            foreach ($tags as $tag) {
-                $tagData = $this->utils->getTagData($tag[0]);
+        $tagsAmount = $this->utils->findTagsAmount($body);
+        if ($tagsAmount > 0) {
+            for ($i = 0; $i < $tagsAmount; $i++) {
+                $tag = $this->utils->findNextTag($body);
+                $tagParams = $this->utils->getTagParams($tag);
+                $tagData = $this->utils->getTagData($tag[0], $tagParams);
+
                 $body = substr_replace($body, $tagData, $tag[1], strlen($tag[0]));
             }
         }

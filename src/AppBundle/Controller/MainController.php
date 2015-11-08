@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Header;
 use AppBundle\Entity\Mock;
 use AppBundle\Form\Type\MockType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,9 +54,9 @@ class MainController extends Controller
 
         $response = new Response();
 
-        $converted = $mockService->convertSpecialTags($mock->getBody());
+        $convertedBody = $mockService->convertSpecialTags($mock->getBody());
 
-        $response->setContent($mock->getBody());
+        $response->setContent($convertedBody);
         $response->setStatusCode($mock->getResponseStatus());
 
         foreach ($mock->getHeaders() as $header) {
