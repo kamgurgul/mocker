@@ -44,4 +44,13 @@ Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœn
 * mockId – id mock`a
 
 ###5. Dodatkowe opcje mockowania
-Aby u¿yæ specjalnych tagów nale¿y u¿yæ szablonu: {{nazwa_tagu?<opcjonalne_parametry>}}
+Aby u¿yæ specjalnych tagów nale¿y u¿yæ szablonu: {{nazwa_tagu?opcjonalne_parametry}}
+
+####Dostêpne tagi:
+#####Date - wyœwietla aktualn¹ datê. 
+Dostêpne parametry:
+* format - string formatuj¹cy aktualn¹ datê ([dokumentacja](http://php.net/manual/pl/function.date.php))
+
+Przyk³ady u¿ycia:
+* {{Date?}} - zwraca datê z formatowaniem domyœlnym "Y-m-d H:i:s" np. 2015-11-08 22:50:16
+* {{Date?format=Y-m-d}} - zwraca datê z podanym formatowaniem np. "Y-m-d" zwraca 2015-11-08
