@@ -30,15 +30,19 @@ class MockType extends AbstractType
                     'TRACE' => 'TRACE'),
                 'label' => 'Request method',
             ))
-            ->add('responseStatus', 'text', array(
-                'data' => '200'
+            ->add('responseStatus', 'integer', array(
+                'data' => '200',
             ))
             ->add('headers', 'collection', array(
                 'type' => new HeaderType(),
                 'allow_add' => true,
                 'allow_delete' => true,
-                'by_reference' => false,))
-            ->add('body', 'textarea');
+                'by_reference' => false,
+                'required' => false
+            ))
+            ->add('body', 'textarea', array(
+                'required' => false
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
