@@ -4,8 +4,10 @@ Mocker
 ###1. Opis aplikacji 
 Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœniej przygotowanych danych np. json czy xml. Dziêki aplikacji mo¿liwe bêdzie przygotowanie ró¿nych odpowiedzi serwera i przetestowanie ich zarówno przez klientów mobilnych jak i inne serwery.
 
+
 ###2. Interfejs u¿ytkownika
 ![alt text](https://github.com/kgurgul/mocker/blob/master/info/UI_Interface.png "UI")
+
 
 ###3. U¿yte technologie
 * Jêzyk programowania: PHP
@@ -15,6 +17,7 @@ Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœn
 * Frontend: AngularJS (lub Polymer)
 * System kontroli wersji: GIT (repozytorium na github.com)
 * Interfejs: Material Design for Bootstrap
+
 
 ###4. ERD bazy danych 
 ![alt text](https://github.com/kgurgul/mocker/blob/master/info/ERD.png "ERD")
@@ -30,26 +33,34 @@ Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœn
 * deleted – wartoœæ 1 dla usuniêtego ¿¹dania  
 * method - metoda ¿¹dania 
 
-####user – tabela u¿ytkowników (mo¿e zostaæ zast¹piona przez bibliotekê)
-* userId – id
-* username – nazwa u¿ytkownika 
-* password – has³o u¿ytkownika 
-* email – email u¿ytkownika
-* createdAt – data utworzenia u¿ytkownika 
-
 ####header – nag³ówki dla odpowiedzi z serwera 
 * headerId – id
 * key – klucz nag³ówka 
 * value – wartoœæ nag³ówka 
 * mockId – id mock`a
 
+####user – tabela u¿ytkowników (nie u¿ywana w tej wersji)
+* userId – id
+* username – nazwa u¿ytkownika 
+* password – has³o u¿ytkownika 
+* email – email u¿ytkownika
+* createdAt – data utworzenia u¿ytkownika 
+
+####code – tabela pomocnicza dla auto propozycji zawieraj¹ca listê dostêpnych kodów odpowiedzi serwera (nie u¿ywana w tej wersji)
+* codeId – id
+* code – kod
+* description – opis kodu 
+
+
 ###5. Diagram sekwencji
 ![alt text](https://github.com/kgurgul/mocker/blob/master/info/Diagram_sekwencji.png "Diagram sekwencji")
+
 
 ###6. Diagram przypadków u¿ycia
 Modu³ u¿ytkownika jest niezaimplementowany w tej wersji 
 
 ![alt text](https://github.com/kgurgul/mocker/blob/master/info/Przypadki_u¿ycia.png "Przypadki u¿ycia")
+
 
 ###7. Dodatkowe opcje mockowania
 Aby u¿yæ specjalnych tagów nale¿y u¿yæ szablonu: {{nazwa_tagu?opcjonalne_parametry}}
