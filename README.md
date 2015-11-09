@@ -62,3 +62,11 @@ Dostêpne parametry:
 Przyk³ady u¿ycia:
 * {{Date?}} - zwraca datê z formatowaniem domyœlnym "Y-m-d H:i:s" np. 2015-11-08 22:50:16
 * {{Date?format=Y-m-d}} - zwraca datê z podanym formatowaniem np. "Y-m-d" zwraca 2015-11-08
+
+#####Timestamp - wyœwietla aktualny timestamp. 
+Przyk³ady u¿ycia:
+* {{Timestamp?}} - zwraca np. 1447086090
+
+#####Uuid - wyœwietla unikalny identyfikator. 
+Przyk³ady u¿ycia:
+* {{Uuid?}} - zwraca np. 5640c845b63b6
