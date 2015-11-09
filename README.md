@@ -14,9 +14,8 @@ Celem aplikacji jest umo¿liwienie u¿ytkownikom na wygenerowanie linków do wczeœn
 * Framework: Symphony2
 * Baza danych: MySQL
 * ORM do obs³ugi bazy danych: Doctrine 
-* Frontend: AngularJS (lub Polymer)
 * System kontroli wersji: GIT (repozytorium na github.com)
-* Interfejs: Material Design for Bootstrap
+* Interfejs: Bootstrap 
 
 
 ###4. ERD bazy danych 
@@ -63,7 +62,7 @@ Modu³ u¿ytkownika jest niezaimplementowany w tej wersji
 
 
 ###7. Dodatkowe opcje mockowania
-Aby u¿yæ specjalnych tagów nale¿y u¿yæ szablonu: {{nazwa_tagu?opcjonalne_parametry}}
+Specjalne tagi nale¿y opakowywaæ wed³ug szablonu: {{nazwa_tagu?opcjonalne_parametry}}
 
 ####Dostêpne tagi:
 #####Date - wyœwietla aktualn¹ datê. 
