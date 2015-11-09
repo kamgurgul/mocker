@@ -12,6 +12,8 @@ namespace AppBundle\Utils;
 class Utils
 {
     private $DATE_TAG = 'Date';
+    private $TIMESTAMP_TAG = "Timestamp";
+    private $UUID_TAG = "Uuid";
 
     private $tagsPattern = '/{{.*\?.*}}/';
 
@@ -70,6 +72,11 @@ class Utils
                 }
                 $date = new \DateTime();
                 return $date->format($format);
+            case $this->TIMESTAMP_TAG:
+                $date = new \DateTime();
+                return $date->getTimestamp();
+            case $this->UUID_TAG:
+                return uniqid();
         }
 
         return '';
