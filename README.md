@@ -84,7 +84,7 @@ Przyk³ady u¿ycia:
 ###8. Live server
 [Mocker](http://kgurgul-mockertool.rhcloud.com/)
 
-###9. Konfiguracja projektu (uruchamia w lokalizacji z projektem)
+###9. Konfiguracja projektu (uruchamiaæ w katalogu z projektem)
 * composer install - dogranie potrzebnych zale¿noœci
 * php app/console server:run - uruchomienie serwera
 * php app/console doctrine:schema:update --force - utworzenie tabel w bazie danych 
