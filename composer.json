@@ -20,7 +20,16 @@
     "incenteev/composer-parameter-handler": "~2.0"
   },
   "require-dev": {
-    "sensio/generator-bundle": "~2.3"
+    "sensio/generator-bundle": "~2.3",
+    "escapestudios/symfony2-coding-standard": "~2.0",
+    "sebastian/phpcpd": "2.0.*",
+    "phpunit/phpunit": "4.4.*",
+    "pdepend/pdepend": "2.0.*",
+    "phpmd/phpmd": "2.1.*",
+    "squizlabs/php_codesniffer": "2.*",
+    "phpdocumentor/phpdocumentor": "~2.8",
+    "phploc/phploc": "2.0.*",
+    "mayflower/php-codebrowser": "~1.1"
   },
   "scripts": {
     "post-install-cmd": [
