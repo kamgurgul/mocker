@@ -6,9 +6,9 @@
     <property name="builddir" value="${workspace}/app/build" />
 
     <target name="build"
-            depends="prepare,vendors,parameters,lint,phploc,pdepend,phpcpd,phpmd-ci,phpcs-ci,phpdoc,phpcb"/>
+            depends="prepare,vendors,parameters,lint,phploc,pdepend,phpcpd,phpmd-ci,phpcs-ci,phpdoc"/>
 
-    <target name="build-parallel" depends="prepare,lint,tools-parallel,phpcb"/>
+    <target name="build-parallel" depends="prepare,lint,tools-parallel"/>
 
     <target name="tools-parallel" description="Run tools in parallel">
         <parallel threadCount="2">
@@ -125,17 +125,6 @@
             <arg path="${basedir}/app/phpunit.xml" />
         </exec>
     </target>-->
-
-    <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
-        <exec executable="phpcb">
-            <arg value="--log" />
-            <arg path="${builddir}/logs" />
-            <arg value="--source" />
-            <arg path="${sourcedir}" />
-            <arg value="--output" />
-            <arg path="${builddir}/code-browser" />
-        </exec>
-    </target>
 
     <target name="vendors" description="Update vendors">
         <exec executable="php" failonerror="true">
