@@ -75,10 +75,6 @@
                 <modified />
             </fileset>
 
-            <fileset dir="${basedir}/src/AppBundle/Tests">
-                <include name="**/*.php" />
-                <modified />
-            </fileset>
         </apply>
 
         <property name="lint.done" value="true"/>
