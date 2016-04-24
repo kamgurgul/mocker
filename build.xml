@@ -23,7 +23,7 @@
             description="Performs a lint check and runs the tests (without generating code coverage reports)"/>
     <!--depends="lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci"-->
     <target name="static-analysis"
-            depends="lint"
+            depends="lint, phploc-ci"
             description="Performs static analysis" />
 
     <!-- Adjust the threadCount attribute's value to the number of CPUs -->
