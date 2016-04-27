@@ -11,7 +11,7 @@
 
     <!--depends="prepare,static-analysis,phpunit,phpdox,-check-failure"-->
     <target name="full-build"
-            depends="prepare,static-analysis,phpunit"
+            depends="composer,prepare,static-analysis,phpunit"
             description="Performs static analysis, runs the tests, and generates project documentation"/>
 
     <target name="full-build-parallel"
@@ -243,5 +243,16 @@
                 </not>
             </condition>
         </fail>
+    </target>
+
+    <target name="composer" description="Installing composer dependencies">
+        <exec executable="composer" failonerror="true">
+            <arg value="install" />
+            <arg value="--dev" />
+            <arg value="--prefer-dist" />
+            <arg value="--no-progress" />
+
+            <env key="SYMFONY_ENV" value="test"/>
+        </exec>
     </target>
 </project>
