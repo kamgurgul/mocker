@@ -11,7 +11,7 @@
 
     <!--depends="prepare,static-analysis,phpunit,phpdox,-check-failure"-->
     <target name="full-build"
-            depends="prepare,static-analysis"
+            depends="prepare,static-analysis,phpunit"
             description="Performs static analysis, runs the tests, and generates project documentation"/>
 
     <target name="full-build-parallel"
