@@ -9,13 +9,12 @@
     <property name="phpmd"   value="phpmd"/>
     <property name="phpunit" value="phpunit"/>
 
-    <!--depends="prepare,static-analysis,phpunit,phpdox,-check-failure"-->
     <target name="full-build"
-            depends="composer,prepare,static-analysis,phpunit"
+            depends="composer,prepare,static-analysis,phpunit,phpdox"
             description="Performs static analysis, runs the tests, and generates project documentation"/>
 
     <target name="full-build-parallel"
-            depends="prepare,static-analysis-parallel,phpunit,phpdox,-check-failure"
+            depends="prepare,static-analysis-parallel,phpunit,phpdox"
             description="Performs static analysis (executing the tools in parallel), runs the tests, and generates project documentation"/>
 
     <target name="quick-build"
@@ -233,16 +232,6 @@
         <exec executable="${phpdox}" dir="${basedir}/build" taskname="phpdox"/>
 
         <property name="phpdox.done" value="true"/>
-    </target>
-
-    <target name="-check-failure">
-        <fail message="PHPUnit did not finish successfully">
-            <condition>
-                <not>
-                    <equals arg1="${result.phpunit}" arg2="0"/>
-                </not>
-            </condition>
-        </fail>
     </target>
 
     <target name="composer" description="Installing composer dependencies">
