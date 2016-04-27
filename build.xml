@@ -23,7 +23,7 @@
             description="Performs a lint check and runs the tests (without generating code coverage reports)"/>
     <!--depends="lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci"-->
     <target name="static-analysis"
-            depends="lint, phploc-ci, pdepend, phpmd-ci"
+            depends="lint, phploc-ci, pdepend, phpmd-ci, phpcs-ci"
             description="Performs static analysis" />
 
     <!-- Adjust the threadCount attribute's value to the number of CPUs -->
@@ -157,7 +157,6 @@
             <arg value="--extensions=php" />
             <arg value="--ignore=autoload.php" />
             <arg path="${basedir}/src" />
-            <arg path="${basedir}/tests" />
         </exec>
 
         <property name="phpcs.done" value="true"/>
@@ -174,7 +173,6 @@
             <arg value="--extensions=php" />
             <arg value="--ignore=autoload.php" />
             <arg path="${basedir}/src" />
-            <arg path="${basedir}/tests" />
         </exec>
 
         <property name="phpcs.done" value="true"/>
