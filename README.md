@@ -1,4 +1,4 @@
 Mocker
 ======
 
-Sample app written in Symphony 2 to give possibility to mock requests. 
+Symphony 2 test app for request mocking
